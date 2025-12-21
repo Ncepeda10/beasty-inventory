@@ -65,7 +65,9 @@ async function seedFinal() {
 
     // Crear mapa de plantillas para referencia posterior
     insertedPlantillas.forEach(plantilla => {
-      plantillasMap.set(plantilla.numeroPlantilla, plantilla.id);
+      if (plantilla.numeroPlantilla !== null) {
+        plantillasMap.set(plantilla.numeroPlantilla, plantilla.id);
+      }
     });
 
     console.log(`✅ Templates inserted: ${insertedPlantillas.length}`);
@@ -151,7 +153,9 @@ async function seedFinal() {
     // Crear mapa de productos para referencia
     const productosMap = new Map<string, number>(); // skuToteat -> id
     insertedProductos.forEach(producto => {
-      productosMap.set(producto.skuToteat, producto.id);
+      if (producto.skuToteat !== null) {
+        productosMap.set(producto.skuToteat, producto.id);
+      }
     });
 
     // 4. Crear relaciones template_items

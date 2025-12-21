@@ -96,7 +96,10 @@ async function getInventoryDetail(sessionId: number): Promise<InventoryDetail | 
 
     return {
       ...session,
-      items: itemsResult,
+      items: itemsResult.map(item => ({
+        ...item,
+        quantity: Number(item.quantity)
+      })),
     };
   } catch (error) {
     console.error("Error fetching inventory detail:", error);

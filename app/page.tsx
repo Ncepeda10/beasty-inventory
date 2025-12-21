@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { templates } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -9,7 +10,7 @@ async function getTemplates() {
     const result = await db
       .select()
       .from(templates)
-      .where(templates.isActive)
+      .where(eq(templates.isActive, true))
       .orderBy(templates.numeroPlantilla);
 
     return result;

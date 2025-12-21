@@ -16,7 +16,7 @@ async function seed() {
   console.log('✅ Units inserted:', insertedUnits.length);
 
   // Create unit lookup map
-  const unitMap = {};
+  const unitMap: Record<string, any> = {};
   insertedUnits.forEach(unit => {
     unitMap[unit.abbreviation] = unit;
   });
