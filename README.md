@@ -73,20 +73,27 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 ## 📊 Funcionalidades Completas
 
+### 🧭 Navegación Lateral
+- ✅ Sidebar responsivo con tema oscuro
+- ✅ Navegación intuitiva entre módulos
+- ✅ Resaltado automático del item activo
+- ✅ Iconos de Lucide React
+- ✅ Oculto en móviles, fijo en desktop
+
 ### 🏠 Dashboard Principal
 - ✅ Vista de plantillas disponibles con cards elegantes
 - ✅ Navegación intuitiva a formularios de inventario
 - ✅ Diseño responsive con tema naranja
 
-### 📝 Realizar Inventarios
-- ✅ Formularios dinámicos por plantilla
-- ✅ Productos ordenados alfabéticamente o por orden definido
-- ✅ Agrupación por categorías
-- ✅ Inputs numéricos con validación
-- ✅ Selector de unidades de medida
-- ✅ Campo de notas por producto
-- ✅ Barra de progreso en tiempo real
-- ✅ Estado de loading durante guardado
+### 📝 Nuevo Conteo de Inventario
+- ✅ Selección de plantilla para iniciar conteo
+- ✅ Creación automática de sesiones de inventario
+- ✅ Formulario móvil-friendly con inputs grandes
+- ✅ Auto-guardado inteligente (debounce 1s)
+- ✅ Indicadores visuales de guardado (✓ verde)
+- ✅ Gestión de unidades por defecto
+- ✅ Progreso en tiempo real del conteo
+- ✅ Finalización y conversión a historial
 
 ### 💾 Persistencia de Datos
 - ✅ Guardado en base de datos PostgreSQL
@@ -102,6 +109,15 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 - ✅ Formateo inteligente de fechas
 - ✅ Duración calculada de sesiones
 - ✅ Filtrado automático (solo productos con cantidad > 0)
+
+### ⚙️ Administración del Sistema
+- ✅ Gestión de unidades de medida (UDM)
+- ✅ Gestión completa de plantillas de inventario
+- ✅ Configuración de productos por plantilla
+- ✅ Interfaz de administración intuitiva
+- ✅ Toggle visual con optimismo para selección de productos
+- ✅ Tablas responsivas con acciones
+- ✅ Diseño consistente con el sistema
 
 ## 🗂️ Estructura de Base de Datos
 
@@ -165,4 +181,19 @@ Después de conectar el repositorio:
 # Una vez desplegado, puedes ejecutar el seed desde Vercel
 # O directamente en tu base de datos de producción
 npm run db:seed-final
+```
+
+## 🛣️ Rutas de la Aplicación
+
+```
+📱 Páginas Disponibles:
+/                    - Dashboard principal con plantillas
+/conteos           - Nuevo conteo (selección de plantilla)
+/conteos/[id]      - Formulario de conteo con auto-guardado
+/historial          - Lista de inventarios realizados
+/historial/[id]     - Detalle de un inventario específico
+/inventario/[id]    - Formulario de conteo final (legacy)
+/admin/unidades     - Gestión de unidades de medida
+/admin/plantillas   - Gestión de plantillas de inventario
+/admin/plantillas/[id] - Configuración de productos por plantilla
 ```
