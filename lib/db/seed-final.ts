@@ -1,3 +1,6 @@
+import { config } from 'dotenv';
+config({ path: '.env.local' });
+
 import { db } from './index';
 import { products, templates, templateItems } from './schema';
 import * as fs from 'fs';

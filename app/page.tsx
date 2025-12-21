@@ -5,6 +5,8 @@ import { eq } from "drizzle-orm";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
+export const dynamic = 'force-dynamic';
+
 async function getTemplates() {
   try {
     const result = await db
