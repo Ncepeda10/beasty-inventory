@@ -1,6 +1,5 @@
 import { db } from "@/lib/db";
 import { units } from "@/lib/db/schema";
-import { dotenv } from "dotenv";
 
 // Cargar variables de entorno
 require("dotenv").config({ path: ".env.local" });
