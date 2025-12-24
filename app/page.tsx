@@ -9,11 +9,18 @@ export const dynamic = 'force-dynamic';
 
 async function getTemplates() {
   try {
-    const result = await db
-      .select()
-      .from(templates)
-      .where(eq(templates.isActive, true))
-      .orderBy(templates.numeroPlantilla);
+    // Consulta directa usando columnas que existen en la BD real
+    const result = await db.execute(`
+      SELECT
+        id,
+        name,
+        description,
+        is_active as "isActive",
+        created_at as "createdAt"
+      FROM templates
+      WHERE is_active = true
+      ORDER BY name
+    `);
 
     return result;
   } catch (error) {
@@ -49,7 +56,7 @@ export default async function Home() {
 
         {/* Templates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {templatesList.map((template) => (
+          {templatesList.map((template: any) => (
             <Link key={template.id} href={`/inventario/${template.id}`}>
               <Card className="h-full cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-orange-200 hover:border-orange-300 bg-white">
                 <CardHeader className="pb-4">
@@ -63,7 +70,7 @@ export default async function Home() {
                 <div className="px-6 pb-6">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">
-                      ID: {template.numeroPlantilla}
+                      ID: {template.id as number}
                     </span>
                     <div className="flex items-center text-orange-600">
                       <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

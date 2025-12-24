@@ -108,3 +108,8 @@ export function ProductToggler({ templateId, product, initialChecked }: ProductT
     </div>
   );
 }
+
+
+
+
+

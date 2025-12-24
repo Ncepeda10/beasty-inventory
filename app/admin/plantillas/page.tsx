@@ -8,11 +8,18 @@ import { ClipboardList, Settings, Package } from "lucide-react";
 
 async function getTemplates() {
   try {
-    const result = await db
-      .select()
-      .from(templates)
-      .where(eq(templates.isActive, true))
-      .orderBy(templates.numeroPlantilla);
+    // Consulta directa usando columnas que existen en la BD real
+    const result = await db.execute(`
+      SELECT
+        id,
+        name,
+        description,
+        is_active as "isActive",
+        created_at as "createdAt"
+      FROM templates
+      WHERE is_active = true
+      ORDER BY name
+    `);
 
     return result;
   } catch (error) {
@@ -47,7 +54,7 @@ export default async function PlantillasPage() {
 
         {/* Templates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allTemplates.map((template) => (
+          {allTemplates.map((template: any) => (
             <Card key={template.id} className="h-full hover:shadow-lg transition-shadow duration-200">
               <CardHeader className="pb-4">
                 <CardTitle className="text-xl font-semibold text-gray-900 mb-2">
@@ -59,7 +66,7 @@ export default async function PlantillasPage() {
               </CardHeader>
               <CardContent className="pt-0">
                 <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                  <span>ID: {template.numeroPlantilla}</span>
+                  <span>ID: {template.id as number}</span>
                   <span className="flex items-center">
                     <Package className="w-4 h-4 mr-1" />
                     Activa
@@ -101,3 +108,7 @@ export default async function PlantillasPage() {
     </div>
   );
 }
+
+
+
+

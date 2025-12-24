@@ -76,3 +76,8 @@ console.log("• Códigos de barras para escaneo rápido");
 console.log("• Exportar conteo parcial en PDF");
 
 console.log("\n✅ Flujo de Conteos completamente funcional y optimizado!");
+
+
+
+
+
